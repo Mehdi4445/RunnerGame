@@ -9,7 +9,8 @@ public class CoinAmount : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("CoinsAmount") + "";
+		gameObject.GetComponent<TextMeshProUGUI>().text = "0";
+		//gameObject.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("CoinsAmount") + "";
 	}
 	
 	// Update is called once per frame
@@ -19,4 +20,10 @@ public class CoinAmount : MonoBehaviour {
 			PlayerPrefs.SetInt("CoinsAmount", int.Parse(gameObject.GetComponent<TextMeshProUGUI>().text));
 		}
 	}
+
+	public void SaveCoins(){
+		int coinsAlreadyColledted = PlayerPrefs.GetInt("CoinsAmount");
+		PlayerPrefs.SetInt("CoinsAmount", coinsAlreadyColledted + int.Parse(gameObject.GetComponent<TextMeshProUGUI>().text));
+	}
+
 }

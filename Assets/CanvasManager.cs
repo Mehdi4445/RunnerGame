@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class CanvasManager : MonoBehaviour
 	public GameObject coinPanelTxt;
 	public GameObject gameOverCoinTxt;
 	private bool isPause = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         
@@ -23,6 +24,14 @@ public class CanvasManager : MonoBehaviour
     {
         
     }
+
+	public void GameOver(){
+		gameOverPanel.SetActive(true);
+		pauseBtn.SetActive(false);
+		Time.timeScale = 0;
+		coinPanelTxt.GetComponent<CoinAmount>().SaveCoins();
+		gameOverCoinTxt.GetComponent<TextMeshProUGUI>().text = PlayerPrefs.GetInt("CoinsAmount") + "";
+	}
 
     public void PausePlay(){
 		if(isPause){
