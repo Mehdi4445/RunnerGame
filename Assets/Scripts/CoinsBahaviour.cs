@@ -23,6 +23,7 @@ public class CoinsBahaviour : MonoBehaviour
 			int coinUI = int.Parse(UI.GetComponent<TextMeshProUGUI >().text) + value;
 			UI.GetComponent<TextMeshProUGUI >().text = coinUI + "";
 			animator.SetBool("IsCollect", true);
+			//Destroy(gameObject);
 		
 		}
 	}
